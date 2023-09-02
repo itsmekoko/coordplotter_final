@@ -87,7 +87,8 @@ fun Map(xPercent: Float, yPercent: Float, modifier: Modifier = Modifier) {
         Box(
             modifier = Modifier
                 .offset(
-                    (xPercent * 300 - 18).dp, (yPercent * 300 - 18).dp
+                    x = ((xPercent * 250).coerceIn(0f, 250f)).dp,
+                    y = ((yPercent * 250).coerceIn(0f, 250f)).dp
                 )
                 .size(50.dp)
                 .clip(CircleShape)

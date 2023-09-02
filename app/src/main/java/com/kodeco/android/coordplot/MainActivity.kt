@@ -4,13 +4,22 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Slider
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -31,14 +40,31 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun PlotSurface() {
+    var xPercent by remember { mutableFloatStateOf(0.5f) }
+    var yPercent by remember { mutableFloatStateOf(0.5f) }
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = Color.White
     ) {
-        // TODO Build out the plot surface
-        //  This should include a Column composable that
-        //  includes a Map, and two MapSlider composables
-        //  (one slider for each axis).
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            Map(xPercent, yPercent)
+            Slider(
+                value = xPercent,
+                onValueChange = { xPercent = it },
+                valueRange = 0f..1f,
+                modifier = Modifier.padding(top = 16.dp)
+            )
+            Slider(
+                value = yPercent,
+                onValueChange = { yPercent = it },
+                valueRange = 0f..1f,
+                modifier = Modifier.padding(top = 16.dp)
+            )
+        }
     }
 
 }

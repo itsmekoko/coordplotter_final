@@ -25,6 +25,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.times
 import com.kodeco.android.coordplot.ui.theme.MyApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -99,10 +100,10 @@ fun Map(xPercent: Float, yPercent: Float, modifier: Modifier = Modifier) {
                 // Offset determines the position of the blue circle on the yellow box
                 // The .coerceIn() function ensures the blue circle stays inside the yellow box.
                 .offset(
-                    x = ((xPercent * 250).coerceIn(0f, 250f)).dp,
-                    y = ((yPercent * 250).coerceIn(0f, 250f)).dp
+                    x = (xPercent * (300.dp - 36.dp)).coerceIn(0.dp, 300.dp - 36.dp),
+                    y = (yPercent * (300.dp - 36.dp)).coerceIn(0.dp, 300.dp - 36.dp)
                 )
-                .size(50.dp)
+                .size(36.dp)
                 .clip(CircleShape)
                 .background(Color.Blue)
         )

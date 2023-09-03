@@ -30,6 +30,7 @@ import com.kodeco.android.coordplot.ui.theme.MyApplicationTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Set the main content view to be the PlotSurface composable
         setContent {
             MyApplicationTheme {
                 PlotSurface()
@@ -40,24 +41,30 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun PlotSurface() {
+    // Define state variables to track x and y percentages for positioning the blue circle
     var xPercent by remember { mutableFloatStateOf(0.5f) }
     var yPercent by remember { mutableFloatStateOf(0.5f) }
+    // Main surface for the UI
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = Color.White
     ) {
+        // Center the Map and Sliders using a Column
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
             modifier = Modifier.fillMaxSize()
         ) {
+            // Render the map with the blue circle
             Map(xPercent, yPercent)
+            // Slider to adjust the xPercent (horizontal position)
             Slider(
                 value = xPercent,
                 onValueChange = { xPercent = it },
                 valueRange = 0f..1f,
                 modifier = Modifier.padding(top = 16.dp)
             )
+            // Slider to adjust the yPercent (vertical position)
             Slider(
                 value = yPercent,
                 onValueChange = { yPercent = it },
@@ -73,19 +80,24 @@ fun PlotSurface() {
 @Composable
 fun PlotSurfacePreview() {
     MyApplicationTheme {
+        // Preview of the main PlotSurface composable
         PlotSurface()
     }
 }
 
 @Composable
 fun Map(xPercent: Float, yPercent: Float, modifier: Modifier = Modifier) {
+    // Yellow box representing the map
     Box(
         modifier = modifier
             .size(300.dp)
             .background(Color.Yellow)
     ) {
+        // Blue circle that will be moved based on xPercent and yPercent
         Box(
             modifier = Modifier
+                // Offset determines the position of the blue circle on the yellow box
+                // The .coerceIn() function ensures the blue circle stays inside the yellow box.
                 .offset(
                     x = ((xPercent * 250).coerceIn(0f, 250f)).dp,
                     y = ((yPercent * 250).coerceIn(0f, 250f)).dp
@@ -101,6 +113,7 @@ fun Map(xPercent: Float, yPercent: Float, modifier: Modifier = Modifier) {
 @Composable
 fun MapPreview() {
     MyApplicationTheme {
+        // Preview of the Map composable with centered blue circle
         Map(xPercent = 0.5f, yPercent = 0.5f)
     }
 }

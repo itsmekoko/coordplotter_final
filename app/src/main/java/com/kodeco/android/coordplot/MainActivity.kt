@@ -62,14 +62,12 @@ fun PlotSurface() {
             Slider(
                 value = xPercent,
                 onValueChange = { xPercent = it },
-                valueRange = 0f..1f,
                 modifier = Modifier.padding(top = 16.dp)
             )
             // Slider to adjust the yPercent (vertical position)
             Slider(
                 value = yPercent,
                 onValueChange = { yPercent = it },
-                valueRange = 0f..1f,
                 modifier = Modifier.padding(top = 16.dp)
             )
         }

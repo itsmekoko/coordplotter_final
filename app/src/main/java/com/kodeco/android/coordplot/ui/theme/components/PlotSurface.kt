@@ -22,12 +22,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kodeco.android.coordplot.ui.theme.MyApplicationTheme
 
-// The main composable function that renders the plot surface with a map and sliders
-// for controlling the x and y positions.
+/* The main composable function that renders the plot surface with a map and sliders
+ * for controlling the x and y positions.
+ */
 @Composable
 fun PlotSurface() {
-    // State variables to hold the current values of the x and y sliders.
-    // Initialized to 0.5f to start in the center of the surface.
+    /* State variables to hold the current values of the x and y sliders.
+     * Initialized to 0.5f to start in the center of the surface.
+     */
     var xPercent by remember { mutableFloatStateOf(0.5f) }
     var yPercent by remember { mutableFloatStateOf(0.5f) }
 
@@ -61,8 +63,7 @@ fun PlotSurface() {
                         .padding(start = 8.dp)
                         .width(120.dp)
                 )
-                // Slider to control the x-position,
-                // updates the xPercent state variable on value change.
+                // Slider to control the x-position,updates the xPercent state with onValueChange.
                 Slider(
                     value = xPercent,
                     onValueChange = { xPercent = it },
@@ -83,8 +84,7 @@ fun PlotSurface() {
                         .padding(start = 8.dp)
                         .width(120.dp)
                 )
-                // Slider to control the y-position,
-                // updates the yPercent state variable on value change.
+                // Slider to control the x-position,updates the xPercent state with onValueChange.
                 Slider(
                     value = yPercent,
                     onValueChange = { yPercent = it },

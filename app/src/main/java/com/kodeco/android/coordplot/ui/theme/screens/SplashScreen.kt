@@ -20,8 +20,10 @@ import kotlinx.coroutines.delay
 @Composable
 fun SplashScreen(navController: NavController) {
 
-    // The Box composable places its children on top of each other,with the last child drawn on top.
-    // Here it is modified to fill the maximum size and has a blue background.
+    /* The Box composable places its children on top of each other,with the last child drawn on top.
+     * Here it is modified to fill the maximum size and has a blue background.
+     */
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -29,8 +31,9 @@ fun SplashScreen(navController: NavController) {
         contentAlignment = Alignment.Center // Aligns the content to the center of the box.
     ) {
 
-        // The Image composable is used to display an image resource.
-        // Here it is displaying the plotter_logo resource.
+        /* The Image composable is used to display an image resource.
+         * Here it is displaying the plotter_logo resource.
+         */
         Image(
             // References to the logo drawable resource
             painter = painterResource(id = R.drawable.plotter_logo),
@@ -38,13 +41,12 @@ fun SplashScreen(navController: NavController) {
             contentDescription = null,
             // The size of the image is set to 400 dp.
             modifier = Modifier.size(400.dp)
+
         )
 
-        // LaunchedEffect is a side effect that only runs once,
-        // when the composable is first applied.
+        //LaunchedEffect is a side effect that only runs once, when the composable is first applied.
         LaunchedEffect(Unit) {
             // Delays the execution for 2000 milliseconds (2 seconds)
-            // before executing the next line.
             delay(2000)
             // Navigates to the "main" destination (PlotSurface composable).
             navController.navigate("main") {

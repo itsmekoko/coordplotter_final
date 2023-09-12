@@ -17,20 +17,23 @@ import androidx.compose.ui.unit.times
 import com.kodeco.android.coordplot.R
 import com.kodeco.android.coordplot.ui.theme.MyApplicationTheme
 
-// The Map composable function which takes xPercent and yPercent as parameters
-// to determine the position of the Pac-Man image within the box.
+/* The Map composable function which takes xPercent and yPercent as parameters
+ * to determine the position of the Pac-Man image within the box.
+ */
 @Composable
 fun Map(xPercent: Float, yPercent: Float, modifier: Modifier = Modifier) {
 
-    // A layout composable that measures its children with the given constraints,
-    // then applies the given modifier to the layout's size and constraints.
+    /* A layout composable that measures its children with the given constraints,
+     * then applies the given modifier to the layout's size and constraints.
+     */
     BoxWithConstraints(
         modifier = modifier
             .background(Color.Blue) // Setting the background color of the outermost box to blue.
     ) {
 
-        // Calculating the size for the inner box to maintain a padding of 100.dp
-        // from the constraints.
+        /* Calculating the size for the inner box to maintain a padding of 100.dp
+         * from the constraints.
+         */
         val boxSize = min(maxWidth, maxHeight) - 100.dp
 
         // Creating an inner box with a size determined by boxSize and a blue background.
@@ -64,9 +67,10 @@ fun MapPreview() {
 
     // Applying the application theme to the preview.
     MyApplicationTheme {
+        /* Invoking the Map composable with initial values to position the Pac-Man
+         * at the center of the box.
+         */
 
-        // Invoking the Map composable with initial values to position the Pac-Man
-        // at the center of the box.
         Map(xPercent = 0.5f, yPercent = 0.5f)
     }
 }
